@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 export default function Model() {
   const { scene, animations } = useGLTF("/3dmodels/f2.glb");
-  const { actions } = useAnimations(animations, scene);
+  const { actions, mixer } = useAnimations(animations, scene);
   const { set } = useThree();
   const scroll = useScroll();
 
@@ -21,23 +21,36 @@ export default function Model() {
     });
 
     github.userData.url = "https://github.com/Im-1ucky";
-    linkedin.userData.url = "https://www.linkedin.com/in/lucky-reddy-535811391";
+    linkedin.userData.url =
+      "https://www.linkedin.com/in/lucky-reddy-535811391";
     email.userData.url = "mailto:luckymi11lite@gmail.com";
 
     if (blenderCamera) {
       set({ camera: blenderCamera });
     }
 
-    Object.values(actions).forEach((action) => {
+    Object.entries(actions).forEach(([name, action]) => {
       action.play();
-      action.paused = true;
+
+      if (name === "Computer Chair_High Heels 2_0Action") {
+        action.timeScale = 0.25;
+      } else {
+        action.paused = true;
+      }
     });
   }, [scene, actions, set]);
 
-  useFrame(() => {
+  useFrame((state, delta) => {
+    mixer.update(delta);
+
     const progress = scroll.offset;
-    Object.values(actions).forEach((action) => {
-      if (action) action.time = progress * action.getClip().duration;
+
+    Object.entries(actions).forEach(([name, action]) => {
+      if (!action) return;
+
+      if (name !== "Computer Chair_High Heels 2_0Action") {
+        action.time = progress * action.getClip().duration;
+      }
     });
   });
 
