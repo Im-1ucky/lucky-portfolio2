@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./BottomNav.css";
 import { usePortfolioScroll } from "../../ScrollContext";
+import { FileText } from "lucide-react";
 
 const sections = [
   "HOME",
@@ -36,6 +37,17 @@ export default function BottomNav() {
   }
 
   return (
+    <>
+      <a
+        className="resume-btn"
+        href="/resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span className="resume-text">Resume</span>
+        <FileText size={20} className="resume-icon" />
+      </a>
+
     <div className={`bottom-nav ${expanded ? "expanded" : ""}`}>
       <button
         className="nav-arrow"
@@ -87,5 +99,6 @@ export default function BottomNav() {
         {'❯'}
       </button>
     </div>
-  );
+    </>
+  )
 }

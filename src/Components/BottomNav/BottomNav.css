@@ -10,14 +10,27 @@
   align-items: center;
   gap: 0px;
 
-  background: rgba(20, 20, 20, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  /* Liquid/Frosted Glass */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.14),
+    rgba(255, 255, 255, 0.05)
+  );
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
   border-radius: 999px;
 
   z-index: 1000;
+
+  transition: all 0.3s ease;
 }
 
 .bottom-nav button {
@@ -33,36 +46,38 @@
   cursor: pointer;
   font-size: 15px;
 
-  transition: background 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .bottom-nav button:hover {
-  background: rgba(255, 255, 255, 0.08);
-}
-.bottom-nav {
-  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .nav-items {
   display: flex;
-  gap: 6px;
 }
 
 .nav-item {
   background: transparent;
   border: none;
   color: white;
-  padding: 10px 14px;
+  padding: 10px 20px;
   border-radius: 999px;
   cursor: pointer;
+
+  transition: all 0.25s ease;
 }
 
 .nav-item:hover {
-  background: rgba(255,255,255,.08);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .nav-item.active {
-  background: rgba(255,255,255,.15);
+  background: rgba(255, 255, 255, 0.18);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,0.2),
+    0 0 12px rgba(255,255,255,0.08);
 }
 
 .nav-arrow {
@@ -73,4 +88,89 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.resume-btn {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+  transform-origin: right center;
+
+  /* === Same glass as .bottom-nav === */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.14),
+    rgba(255, 255, 255, 0.05)
+  );
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  /* ================================ */
+
+  border-radius: 999px;
+  transition:
+    width .3s ease,
+    transform .25s ease,
+    background .25s ease,
+    padding .3s ease;
+  z-index: 1000;
+}
+
+.resume-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resume-text {
+  white-space: nowrap;
+  opacity: 0;
+  font-size: 20px;
+  transform: translateX(8px);
+  transition:
+    opacity .2s ease,
+    transform .25s ease,
+    max-width .3s ease;
+  max-width: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+@media (hover: hover) {
+  .resume-btn:hover {
+    width: 100px;
+    justify-content: space-between;
+    padding: 0 16px;
+    transform: translateY(-2px);
+  }
+  .resume-btn:hover .resume-text {
+    opacity: 1;
+    transform: translateX(0);
+    max-width: 80px;
+  }
+}
+
+@media (hover: none) {
+  .resume-btn {
+    width: 100px;
+    justify-content: space-between;
+    padding: 0 16px;
+  }
+  .resume-text {
+    opacity: 1;
+    transform: translateX(0);
+    max-width: 80px;
+  }
 }
