@@ -1,12 +1,18 @@
 import { useGLTF, useAnimations, useScroll } from "@react-three/drei";
 import { useThree, useFrame } from "@react-three/fiber";
 import { useEffect } from "react";
+import { usePortfolioScroll } from "./ScrollContext";
 
 export default function Model() {
   const { scene, animations } = useGLTF("/3dmodels/f2.glb");
   const { actions, mixer } = useAnimations(animations, scene);
   const { set } = useThree();
   const scroll = useScroll();
+  const {
+    currentSection,
+    setCurrentSection,
+    setScrollElement,
+  } = usePortfolioScroll();
 
   useEffect(() => {
     const blenderCamera = scene.getObjectByName("CameraMiain");
@@ -40,10 +46,32 @@ export default function Model() {
     });
   }, [scene, actions, set]);
 
+  useEffect(() => {
+    setScrollElement(scroll.el);
+  }, [scroll, setScrollElement]);
+
   useFrame((state, delta) => {
     mixer.update(delta);
 
     const progress = scroll.offset;
+    console.log(progress.toFixed(3));
+
+    //console.log(progress);
+
+    let section = 0;
+
+    if (progress < 0.09) section = 0;
+    else if (progress < 0.19) section = 1;
+    else if (progress < 0.32) section = 2;
+    else if (progress < 0.61) section = 3;
+    else if (progress < 0.79) section = 4;
+    else if (progress < 0.92) section = 5;
+    else section = 6;
+
+    if (section !== currentSection) {
+      console.log("Section:", section, "Progress:", progress.toFixed(3));
+      setCurrentSection(section);
+    }
 
     Object.entries(actions).forEach(([name, action]) => {
       if (!action) return;

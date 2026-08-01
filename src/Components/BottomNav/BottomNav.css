@@ -1,0 +1,76 @@
+.bottom-nav {
+  height: 40px;
+  padding: 0 8px;
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 0px;
+
+  background: rgba(20, 20, 20, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+
+  z-index: 1000;
+}
+
+.bottom-nav button {
+  background: transparent;
+  border: none;
+  color: white;
+  height: 40px;
+  padding: 0 14px;
+  white-space: nowrap;
+
+  border-radius: 999px;
+
+  cursor: pointer;
+  font-size: 15px;
+
+  transition: background 0.2s ease;
+}
+
+.bottom-nav button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.bottom-nav {
+  transition: all 0.3s ease;
+}
+
+.nav-items {
+  display: flex;
+  gap: 6px;
+}
+
+.nav-item {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  background: rgba(255,255,255,.08);
+}
+
+.nav-item.active {
+  background: rgba(255,255,255,.15);
+}
+
+.nav-arrow {
+  font-size: 50px;
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
