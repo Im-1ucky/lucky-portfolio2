@@ -1,0 +1,40 @@
+.contact-hint {
+  position: fixed;
+
+  top: 80px;
+  right: 24px;
+
+  padding: 12px 18px;
+
+  color: white;
+  font-size: 18px; /* Change this to change the font size */
+  white-space: nowrap;
+
+  border-radius: 999px;
+
+  z-index: 1000;
+
+  animation: hintAnimation 3s ease forwards;
+}
+
+@keyframes hintAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  85% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}

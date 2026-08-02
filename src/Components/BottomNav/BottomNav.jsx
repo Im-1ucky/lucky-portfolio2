@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./BottomNav.css";
-import { usePortfolioScroll } from "../../ScrollContext";
-import { FileText, Sun, Moon } from "lucide-react";
+import { usePortfolioScroll } from "../../Context/ScrollContext";
+import { Sun, Moon } from "lucide-react";
 
 const sections = [
   "HOME",
@@ -14,8 +14,8 @@ const sections = [
 ];
 
 export default function BottomNav({
-    darkMode,
-    setDarkMode,
+  darkMode,
+  setDarkMode,
 }) {
   const [expanded, setExpanded] = useState(false);
 
@@ -26,7 +26,6 @@ export default function BottomNav({
   } = usePortfolioScroll();
 
   function goToSection(index) {
-
     if (!scrollElement) return;
 
     scrollElement.scrollTo({
@@ -40,27 +39,17 @@ export default function BottomNav({
   }
 
   return (
-    <>
-      <a
-        className="resume-btn"
-        href="/resume.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
+    <div className={`bottom-nav glass ${expanded ? "expanded" : ""}`}>
+      <button
+        className="theme-toggle"
+        onClick={() => setDarkMode(!darkMode)}
+        aria-label="Toggle theme"
       >
-        <span className="resume-text">Resume</span>
-        <FileText size={20} className="resume-icon" />
-      </a>
+        {darkMode ? <Moon size={20} /> : <Sun size={20} />}
+      </button>
 
-      <div className={`bottom-nav ${expanded ? "expanded" : ""}`}>
-        <button
-          className="theme-toggle"
-          onClick={() => setDarkMode(!darkMode)}
-          aria-label="Toggle theme"
-        >
-          {darkMode ? <Moon size={50} /> : <Sun size={50} />}
-        </button>
+      <div className="nav-divider"></div>
 
-        <div className="nav-divider"></div>
       <button
         className="nav-arrow"
         onClick={() => {
@@ -68,10 +57,11 @@ export default function BottomNav({
             currentSection === 0
               ? sections.length - 1
               : currentSection - 1;
+
           goToSection(nextIndex);
         }}
       >
-        {'❮'}
+        ❮
       </button>
 
       {expanded ? (
@@ -108,9 +98,8 @@ export default function BottomNav({
           goToSection(nextIndex);
         }}
       >
-        {'❯'}
+        ❯
       </button>
     </div>
-    </>
-  )
+  );
 }

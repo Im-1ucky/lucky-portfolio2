@@ -1,10 +1,12 @@
 import { useRef, useState, useEffect } from "react";
 import { useProgress } from "@react-three/drei";
 
-import Scene from "./Scene";
+import Scene from "./Scene/Scene";
 import BottomNav from "./Components/BottomNav/BottomNav";
 import Loader from "./Components/Loader/Loader";
-import { usePortfolioScroll } from "./ScrollContext";
+import { usePortfolioScroll } from "./Context/ScrollContext";
+import ContactTip from "./Components/ContactTip/ContactTip";
+import ResumeButton from "./Components/ResumeButton/ResumeButton";
 
 
 export default function App() {
@@ -70,16 +72,14 @@ export default function App() {
           setCurrentSection={setCurrentSection}
       />
 
+      <ResumeButton />
+
       <BottomNav
           darkMode={darkMode}
           setDarkMode={setDarkMode}
       />
 
-      {showContactHint && (
-        <div className="contact-hint">
-          Click a link to visit its page ↗
-        </div>
-      )}
+      <ContactTip visible={showContactHint} />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { useGLTF, useAnimations, useScroll } from "@react-three/drei";
 import { useThree, useFrame } from "@react-three/fiber";
 import { useEffect } from "react";
-import { usePortfolioScroll } from "./ScrollContext";
+import { usePortfolioScroll } from "../Context/ScrollContext";
 
 export default function Model() {
   const { scene, animations } = useGLTF("/3dmodels/f2.glb");
