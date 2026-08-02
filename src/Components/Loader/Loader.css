@@ -1,0 +1,179 @@
+.loader {
+  position: fixed;
+  inset: 0;
+
+  background: #000;
+  color: white;
+
+  font-family: monospace;
+
+  display: flex;
+  flex-direction: column;
+
+  z-index: 9999;
+
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .3s ease, visibility .3s ease;
+}
+
+.loader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-top {
+  height: 70px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 32px;
+
+  border-bottom: 1px solid rgba(255,255,255,.08);
+
+  text-transform: uppercase;
+  letter-spacing: .35em;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,.85);
+}
+
+.loader-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 32px;
+}
+
+.boot-log {
+  width: min(760px, 100%);
+}
+
+.boot-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: rgba(255,255,255,.92);
+
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 2;
+
+  animation: fadeUp .25s ease;
+}
+
+.loader-bottom {
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 24px 32px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.loader-progress {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 16px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: .25em;
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,.75);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+}
+
+.boot-time {
+  width: 105px;
+  flex-shrink: 0;
+
+  color: rgba(255,255,255,.45);
+}
+
+.cursor {
+  display: inline-block;
+
+  width: 8px;
+  height: 16px;
+
+  background: white;
+
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+
+  0%,49% {
+    opacity: 1;
+  }
+
+  50%,100% {
+    opacity: 0;
+  }
+
+}
+
+@keyframes fadeUp {
+
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+.lucky-logo {
+  margin-top: 32px;
+
+  color: white;
+
+  font-size: 11px;
+  line-height: 1.1;
+
+  white-space: pre;
+
+  opacity: 0;
+
+  animation: logoFade .35s forwards;
+}
+
+@keyframes logoFade {
+
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+.ascii-bar {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  color: white;
+  text-align: center;
+}

@@ -7,9 +7,9 @@ export default function Scene() {
     <Canvas>
       <ambientLight intensity={2} />
       <directionalLight position={[5, 5, 5]} />
-      <ScrollControls pages={10}>
-        <Model/>
-      </ScrollControls>
+        <ScrollControls pages={10}>
+          <Model />
+        </ScrollControls>
     </Canvas>
   );
 }
