@@ -2,14 +2,19 @@ import { Canvas } from "@react-three/fiber";
 import { ScrollControls } from "@react-three/drei";
 import Model from "./Model";
 
-export default function Scene() {
+export default function Scene({ darkMode }) {
   return (
     <Canvas>
-      <ambientLight intensity={2} />
-      <directionalLight position={[5, 5, 5]} />
-        <ScrollControls pages={10}>
-          <Model />
-        </ScrollControls>
+      <ambientLight intensity={darkMode ? 0.1 : 2} />
+
+      <directionalLight
+        position={[5, 5, 5]}
+        intensity={darkMode ? 0.7 : 1}
+      />
+
+      <ScrollControls pages={10}>
+        <Model />
+      </ScrollControls>
     </Canvas>
   );
 }

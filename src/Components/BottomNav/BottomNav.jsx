@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./BottomNav.css";
 import { usePortfolioScroll } from "../../ScrollContext";
-import { FileText } from "lucide-react";
+import { FileText, Sun, Moon } from "lucide-react";
 
 const sections = [
   "HOME",
@@ -13,7 +13,10 @@ const sections = [
   "CONTACT ME",
 ];
 
-export default function BottomNav() {
+export default function BottomNav({
+    darkMode,
+    setDarkMode,
+}) {
   const [expanded, setExpanded] = useState(false);
 
   const {
@@ -48,7 +51,16 @@ export default function BottomNav() {
         <FileText size={20} className="resume-icon" />
       </a>
 
-    <div className={`bottom-nav ${expanded ? "expanded" : ""}`}>
+      <div className={`bottom-nav ${expanded ? "expanded" : ""}`}>
+        <button
+          className="theme-toggle"
+          onClick={() => setDarkMode(!darkMode)}
+          aria-label="Toggle theme"
+        >
+          {darkMode ? <Moon size={50} /> : <Sun size={50} />}
+        </button>
+
+        <div className="nav-divider"></div>
       <button
         className="nav-arrow"
         onClick={() => {

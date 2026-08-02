@@ -6,9 +6,10 @@ import BottomNav from "./Components/BottomNav/BottomNav";
 import Loader from "./Components/Loader/Loader";
 import { usePortfolioScroll } from "./ScrollContext";
 
+
 export default function App() {
   const containerRef = useRef(null);
-
+  const [darkMode, setDarkMode] = useState(false);
   const { currentSection, setCurrentSection } = usePortfolioScroll();
   const { active, progress } = useProgress();
   const [fadeLoader, setFadeLoader] = useState(false);
@@ -48,12 +49,16 @@ export default function App() {
       )}
 
       <Scene
-        eventSource={containerRef}
-        currentSection={currentSection}
-        setCurrentSection={setCurrentSection}
+          darkMode={darkMode}
+          eventSource={containerRef}
+          currentSection={currentSection}
+          setCurrentSection={setCurrentSection}
       />
 
-      <BottomNav />
+      <BottomNav
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+      />
     </div>
   );
 }
