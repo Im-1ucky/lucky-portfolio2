@@ -3,7 +3,9 @@ import { useThree, useFrame } from "@react-three/fiber";
 import { useEffect } from "react";
 import { usePortfolioScroll } from "./ScrollContext";
 
-export default function Model() {
+export default function Model({
+  setTooltip,
+}) {
   const { scene, animations } = useGLTF("/3dmodels/f2.glb");
   const { actions, mixer } = useAnimations(animations, scene);
   const { set } = useThree();
@@ -82,6 +84,49 @@ export default function Model() {
     });
   });
 
+  const handlePointerOver = (e) => {
+    e.stopPropagation();
+
+    let text = "";
+
+    switch (e.object.name) {
+      case "GithubHitbox":
+        text = "Open GitHub ↗";
+        break;
+
+      case "LinkedinHitbox":
+        text = "Open LinkedIn ↗";
+        break;
+
+      case "MailHitbox":
+        text = "Send Email ✉";
+        break;
+
+      default:
+        return;
+    }
+
+    setTooltip({
+      visible: true,
+      text,
+      x: e.clientX + 18,
+      y: e.clientY + 18,
+    });
+
+    document.body.style.cursor = "pointer";
+  };
+
+  const handlePointerOut = (e) => {
+    e.stopPropagation();
+
+    setTooltip((prev) => ({
+      ...prev,
+      visible: false,
+    }));
+
+    document.body.style.cursor = "default";
+  };
+
   const handleClick = (e) => {
     e.stopPropagation();
 
@@ -91,7 +136,14 @@ export default function Model() {
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
-  return <primitive object={scene} onClick={handleClick} />;
+  return (
+    <primitive
+      object={scene}
+      onClick={handleClick}
+      onPointerOver={handlePointerOver}
+      onPointerOut={handlePointerOut}
+    />
+  );
 }
 
 useGLTF.preload("/3dmodels/f2.glb");
