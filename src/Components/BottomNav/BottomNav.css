@@ -208,3 +208,59 @@
 
   flex-shrink: 0;
 }
+
+.contact-hint {
+  position: fixed;
+
+  top: 80px;
+  right: 24px;
+
+  padding: 12px 18px;
+
+  color: white;
+  font-size: 18px; /*Change this to change font of contact me tooltip*/
+  white-space: nowrap;
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.14),
+    rgba(255, 255, 255, 0.05)
+  );
+
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  z-index: 1000;
+
+  animation: hintAnimation 3s ease forwards;
+}
+
+@keyframes hintAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  85% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}

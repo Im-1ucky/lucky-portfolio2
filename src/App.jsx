@@ -14,6 +14,7 @@ export default function App() {
   const { active, progress } = useProgress();
   const [fadeLoader, setFadeLoader] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
+  const [showContactHint, setShowContactHint] = useState(false);
 
   useEffect(() => {
     if (!active && progress === 100) {
@@ -39,6 +40,20 @@ export default function App() {
 
   }, [active, progress]);
 
+  useEffect(() => {
+    if (currentSection === 6) {
+      setShowContactHint(true);
+
+      const timer = setTimeout(() => {
+        setShowContactHint(false);
+      }, 4000);
+
+      return () => clearTimeout(timer);
+    } else {
+      setShowContactHint(false);
+    }
+  }, [currentSection]);
+
   return (
     <div ref={containerRef} style={{ width: "100vw", height: "100vh" }}>
       {showLoader && (
@@ -59,6 +74,12 @@ export default function App() {
           darkMode={darkMode}
           setDarkMode={setDarkMode}
       />
+
+      {showContactHint && (
+        <div className="contact-hint">
+          Click a link to visit its page ↗
+        </div>
+      )}
     </div>
   );
 }
