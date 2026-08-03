@@ -17,6 +17,7 @@ export default function App() {
   const [fadeLoader, setFadeLoader] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
   const [showContactHint, setShowContactHint] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
     if (!active && progress === 100) {
@@ -41,6 +42,18 @@ export default function App() {
     }
 
   }, [active, progress]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     if (currentSection === 6) {
@@ -77,6 +90,7 @@ export default function App() {
       <BottomNav
           darkMode={darkMode}
           setDarkMode={setDarkMode}
+          isMobile={isMobile}
       />
 
       <ContactTip visible={showContactHint} />

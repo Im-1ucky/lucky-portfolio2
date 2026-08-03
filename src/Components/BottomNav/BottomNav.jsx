@@ -16,6 +16,7 @@ const sections = [
 export default function BottomNav({
   darkMode,
   setDarkMode,
+  isMobile,
 }) {
   const [expanded, setExpanded] = useState(false);
 
@@ -64,8 +65,15 @@ export default function BottomNav({
         ❮
       </button>
 
-      {expanded ? (
-        <div className="nav-items">
+      <button
+        className="nav-center"
+        onClick={() => setExpanded(!expanded)}
+      >
+        {sections[currentSection]}
+      </button>
+
+      {expanded && (
+        <div className={`nav-items ${isMobile ? "mobile" : "desktop"}`}>
           {sections.map((section, index) => (
             <button
               key={section}
@@ -78,13 +86,6 @@ export default function BottomNav({
             </button>
           ))}
         </div>
-      ) : (
-        <button
-          className="nav-center"
-          onClick={() => setExpanded(true)}
-        >
-          {sections[currentSection]}
-        </button>
       )}
 
       <button

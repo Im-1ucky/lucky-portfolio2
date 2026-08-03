@@ -70,6 +70,50 @@
     0 0 12px rgba(255, 255, 255, 0.08);
 }
 
+.nav-items.desktop {
+  flex-direction: row;
+}
+
+.nav-items.mobile {
+  position: absolute;
+
+  bottom: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  padding: 8px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.14),
+    rgba(255, 255, 255, 0.05)
+  );
+
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  border-radius: 20px;
+}
+
+.nav-items.mobile .nav-item {
+  width: 180px;
+
+  justify-content: center;
+  text-align: center;
+
+  padding: 12px 18px;
+}
+
 .nav-arrow {
   width: 40px;
   height: 40px;

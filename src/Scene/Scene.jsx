@@ -12,7 +12,7 @@ export default function Scene({ darkMode }) {
         intensity={darkMode ? 0.7 : 1}
       />
 
-      <ScrollControls pages={10}>
+      <ScrollControls pages={20}> //Less than 100 try
         <Model />
       </ScrollControls>
     </Canvas>
