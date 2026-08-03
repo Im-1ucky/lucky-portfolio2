@@ -2,9 +2,10 @@ import { useGLTF, useAnimations, useScroll } from "@react-three/drei";
 import { useThree, useFrame } from "@react-three/fiber";
 import { useEffect } from "react";
 import { usePortfolioScroll } from "../Context/ScrollContext";
+const modelPath = import.meta.env.BASE_URL + "3dmodels/f2.glb";
 
 export default function Model() {
-  const { scene, animations } = useGLTF("/3dmodels/f2.glb");
+  const { scene, animations } = useGLTF(modelPath);
   const { actions, mixer } = useAnimations(animations, scene);
   const { set } = useThree();
   const scroll = useScroll();
@@ -94,4 +95,4 @@ export default function Model() {
   return <primitive object={scene} onClick={handleClick} />;
 }
 
-useGLTF.preload("/3dmodels/f2.glb");
+useGLTF.preload(import.meta.env.BASE_URL + "3dmodels/f2.glb");

@@ -5,7 +5,7 @@ export default function ResumeButton() {
   return (
     <a
       className="resume-btn glass"
-      href="/resume.pdf"
+      href={import.meta.env.BASE_URL + "resume.pdf"}
       target="_blank"
       rel="noopener noreferrer"
     >
