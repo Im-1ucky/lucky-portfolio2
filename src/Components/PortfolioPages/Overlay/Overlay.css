@@ -1,0 +1,34 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.85);
+
+  backdrop-filter: blur(10px);
+
+  z-index: 3000;
+
+  overflow-y: auto;
+}
+
+.overlay-content {
+  width: min(1200px, 90%);
+  margin: 60px auto;
+}
+
+.overlay-close {
+  position: fixed;
+
+  top: 24px;
+  right: 24px;
+
+  width: 48px;
+  height: 48px;
+
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  font-size: 22px;
+}

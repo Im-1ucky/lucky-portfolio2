@@ -4,7 +4,9 @@ import { useEffect } from "react";
 import { usePortfolioScroll } from "../Context/ScrollContext";
 const modelPath = import.meta.env.BASE_URL + "3dmodels/f2.glb";
 
-export default function Model() {
+export default function Model({
+  setOverlayPage,
+}) {
   const { scene, animations } = useGLTF(modelPath);
   const { actions, mixer } = useAnimations(animations, scene);
   const { set } = useThree();

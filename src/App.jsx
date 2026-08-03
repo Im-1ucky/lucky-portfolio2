@@ -8,6 +8,8 @@ import { usePortfolioScroll } from "./Context/ScrollContext";
 import ContactTip from "./Components/ContactTip/ContactTip";
 import ResumeButton from "./Components/ResumeButton/ResumeButton";
 import ScrollHint from "./Components/ScrollHint/ScrollHint";
+import Overlay from "./Components/PortfolioPages/Overlay/Overlay";
+import Experience from "./Components/PortfolioPages/Experience/Experience";
 
 export default function App() {
   const containerRef = useRef(null);
@@ -23,6 +25,7 @@ export default function App() {
   const [showContactHint, setShowContactHint] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [showScrollHint, setShowScrollHint] = useState(false);
+  const [overlayPage, setOverlayPage] = useState(null);
 
   useEffect(() => {
     if (!active && progress === 100) {
@@ -123,10 +126,11 @@ export default function App() {
       )}
 
       <Scene
-          darkMode={darkMode}
-          eventSource={containerRef}
-          currentSection={currentSection}
-          setCurrentSection={setCurrentSection}
+        darkMode={darkMode}
+        eventSource={containerRef}
+        currentSection={currentSection}
+        setCurrentSection={setCurrentSection}
+        setOverlayPage={setOverlayPage}
       />
 
       <ResumeButton />
@@ -142,6 +146,25 @@ export default function App() {
       />
 
       <ContactTip visible={showContactHint} />
+
+      <button
+        style={{
+          position: "fixed",
+          top: 100,
+          left: 20,
+          zIndex: 5000,
+        }}
+        onClick={() => setOverlayPage("experience")}
+      >
+        Open Experience
+      </button>
+
+      <Overlay
+        open={overlayPage !== null}
+        onClose={() => setOverlayPage(null)}
+      >
+        {overlayPage === "experience" && <Experience />}
+      </Overlay>
     </div>
   );
 }
