@@ -7,17 +7,22 @@ import Loader from "./Components/Loader/Loader";
 import { usePortfolioScroll } from "./Context/ScrollContext";
 import ContactTip from "./Components/ContactTip/ContactTip";
 import ResumeButton from "./Components/ResumeButton/ResumeButton";
-
+import ScrollHint from "./Components/ScrollHint/ScrollHint";
 
 export default function App() {
   const containerRef = useRef(null);
   const [darkMode, setDarkMode] = useState(false);
-  const { currentSection, setCurrentSection } = usePortfolioScroll();
+  const {
+    currentSection,
+    setCurrentSection,
+    scrollElement,
+  } = usePortfolioScroll();
   const { active, progress } = useProgress();
   const [fadeLoader, setFadeLoader] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
   const [showContactHint, setShowContactHint] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [showScrollHint, setShowScrollHint] = useState(false);
 
   useEffect(() => {
     if (!active && progress === 100) {
@@ -69,6 +74,45 @@ export default function App() {
     }
   }, [currentSection]);
 
+  useEffect(() => {
+    if (!scrollElement) return;
+
+    if (currentSection === 6) {
+      setShowScrollHint(false);
+      return;
+    }
+
+    let timer;
+
+    if (currentSection !== 6 && !showLoader) {
+      const initialTimer = setTimeout(() => {
+        setShowScrollHint(true);
+      }, 700);
+
+      timer = initialTimer;
+    }
+
+    const handleScroll = () => {
+      setShowScrollHint(false);
+
+      clearTimeout(timer);
+
+      if (currentSection === 6) return;
+
+      timer = setTimeout(() => {
+        setShowScrollHint(true);
+      }, 5000);  //Change this to change scrolltip duration
+    };
+
+    scrollElement.addEventListener("scroll", handleScroll);
+
+    return () => {
+      clearTimeout(timer);
+      scrollElement.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollElement, currentSection, showLoader]);
+
+
   return (
     <div ref={containerRef} style={{ width: "100vw", height: "100vh" }}>
       {showLoader && (
@@ -91,6 +135,10 @@ export default function App() {
           darkMode={darkMode}
           setDarkMode={setDarkMode}
           isMobile={isMobile}
+      />
+
+      <ScrollHint
+        visible={showScrollHint}
       />
 
       <ContactTip visible={showContactHint} />
