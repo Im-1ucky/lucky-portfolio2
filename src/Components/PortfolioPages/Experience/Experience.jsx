@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./Experience.css";
 import { experiences } from "../../../data/experiences";
+import "../../BottomNav/BottomNav.css";
 
 export default function Experience() {
-
   const [current, setCurrent] = useState(0);
 
   const experience = experiences[current];
@@ -22,73 +22,69 @@ export default function Experience() {
 
   return (
     <div className="experience-page">
-
       <div className="experience-content">
 
+        {/* LEFT SIDE */}
         <div className="experience-left">
 
-          <img
-            src={experience.image}
-            alt={experience.title}
-          />
+          <div className="certificate-frame">
+            <img
+              src={experience.image}
+              alt={experience.title}
+            />
+          </div>
 
           <div className="experience-navigation">
-
-            <button onClick={previous}>
-              ← Previous
+            <button
+              className="nav-arrow"
+              onClick={previous}
+            >
+              ❮
             </button>
 
-            <span>
+            <span className="experience-counter">
               {current + 1} / {experiences.length}
             </span>
 
-            <button onClick={next}>
-              Next →
+            <button
+              className="nav-arrow"
+              onClick={next}
+            >
+              ❯
             </button>
-
           </div>
 
         </div>
 
+        {/* RIGHT SIDE */}
         <div className="experience-right">
 
           <h1>{experience.title}</h1>
 
           <h2>{experience.company}</h2>
 
-          <p className="experience-duration">
-            {experience.duration}
-          </p>
-
-          <p className="experience-length">
-            {experience.length}
-          </p>
-
           <div className="experience-about">
-
-            <h3>About</h3>
-
-            <p>{experience.about}</p>
-
+              <h3>About</h3>
+              <p>{experience.about}</p>
           </div>
 
+          <p className="experience-duration">
+              <strong>Duration:</strong> {experience.duration}
+          </p>
+
           <div className="experience-skills">
+              <h3>Skills</h3>
 
-            <h3>Skills</h3>
-
-            <div className="skill-list">
-
-              {experience.skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="experience-skill"
-                >
-                  {skill}
-                </span>
-              ))}
-
-            </div>
-
+              <div className="skill-list">
+                {experience.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="experience-skill"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
           </div>
 
           <a
@@ -103,7 +99,6 @@ export default function Experience() {
         </div>
 
       </div>
-
     </div>
   );
 }

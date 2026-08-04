@@ -14,6 +14,11 @@ import Experience from "./Components/PortfolioPages/Experience/Experience";
 export default function App() {
   const containerRef = useRef(null);
   const [darkMode, setDarkMode] = useState(false);
+  const pageMap = {
+    4: "experience",
+    3: "projects",
+    5: "activities",
+  };
   const {
     currentSection,
     setCurrentSection,
@@ -147,17 +152,19 @@ export default function App() {
 
       <ContactTip visible={showContactHint} />
 
-      <button
-        style={{
-          position: "fixed",
-          top: 100,
-          left: 20,
-          zIndex: 5000,
-        }}
-        onClick={() => setOverlayPage("experience")}
-      >
-        Open Experience
-      </button>
+      {overlayPage === null && pageMap[currentSection] && (
+        <button
+          style={{
+            position: "fixed",
+            top: 100,
+            left: 20,
+            zIndex: 5000,
+          }}
+          onClick={() => setOverlayPage(pageMap[currentSection])}
+        >
+          Open {pageMap[currentSection]}
+        </button>
+      )}
 
       <Overlay
         open={overlayPage !== null}

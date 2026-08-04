@@ -1,24 +1,48 @@
 export const experiences = [
   {
     id: 1,
+        title: "Full Stack Development",
+
+        company: "DevIT",
+
+        duration: "8 weeks",
+
+        image:
+            import.meta.env.BASE_URL +
+            "certificates/devit.png",
+
+        about: "Worked as part of the DevIT development team on HippocampOS, contributing to responsive frontend UI/UX while collaborating on backend services and database integration. Gained hands on experience with real world development workflows, version control, debugging and Agile team collaboration.",
+
+        skills: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "React",
+            "UI/UX"
+        ],
+
+        credential:
+            "https://www.wedevit.in/verify/lucky"
+    },
+  {
+    id: 2,
         title: "AI/ML Internship",
 
         company: "InternPe",
 
-        duration: "04 May 2026 – 28 Jun 2026",
-
-        length: "8 Weeks",
+        duration: "8 weeks",
 
         image: import.meta.env.BASE_URL + "certificates/Internpe.png",
 
         about:
-            "Completed an 8-week AI/ML internship where I learned machine learning fundamentals, data preprocessing, model training and evaluation while working on practical assignments.",
+            "Gained hands on exposure to designing, training and evaluating machine learning models for real world predictive tasks. Worked with supervised learning techniques including classification, regression, Support Vector Machines (SVM) and predictor models while applying data preprocessing and model evaluation practices.",
 
         skills:[
             "Python",
             "NumPy",
             "Pandas",
-            "Scikit-Learn"
+          "Scikit-Learn",
+            "Machine Learning"
         ],
 
         credential:"https://internpe.in/verify.html"

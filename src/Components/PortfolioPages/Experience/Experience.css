@@ -9,28 +9,35 @@
 }
 
 .experience-left{
+    width:520px;
+
     display:flex;
     flex-direction:column;
     align-items:center;
 }
 
 .experience-left img{
-    width:520px;          /* increase/decrease here */
+    max-width:100%;
+    max-height:100%;
+
+    object-fit:contain;
+
     border-radius:12px;
 }
 
 .experience-navigation{
-    margin-top:30px;
+    margin-top:28px;
 
     display:flex;
     align-items:center;
-    gap:24px;
+    justify-content:center;
 
-    color:white;
+    gap:24px;
 }
 
 .experience-right{
-    width:480px;
+    width:500px;
+    height:690px;              /* same height as certificate */
 
     display:flex;
     flex-direction:column;
@@ -41,19 +48,19 @@
 .experience-right h1{
     margin:0;
 
-    font-size:3rem;
+    font-size:2.7rem;
+    line-height:1.15;
 
     color:white;
 }
 
 .experience-right h2{
-    margin-top:8px;
+    margin-top:10px;
 
-    font-size:1.4rem;
-
+    font-size:1.35rem;
     font-weight:400;
 
-    color:rgba(255,255,255,.75);
+    color:rgba(255,255,255,.72);
 }
 
 .experience-right h3{
@@ -61,15 +68,12 @@
 }
 
 .experience-about{
-    margin-top:36px;
+    margin-top:0px;
+    min-height:180px;
 }
 
 .experience-about h3{
     margin-bottom:12px;
-}
-
-.experience-skills{
-    margin-top:36px;
 }
 
 .skill-list{
@@ -86,10 +90,15 @@
     background:rgba(255,255,255,.08);
 
     border:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    color:white;
 }
 
 .credential-button{
-    margin-top:42px;
+    margin-top:auto;
 
     width:max-content;
 
@@ -113,11 +122,16 @@
 }
 
 .experience-duration{
-    margin-top:32px;
+    margin-top:3px;
 
     font-size:1.1rem;
 
     color:white;
+}
+
+
+.experience-duration-section{
+    margin-top:28px;
 }
 
 .experience-length{
@@ -127,7 +141,27 @@
 }
 
 .experience-about p{
+    font-size:1.15rem;
     line-height:1.8;
 
     color:white;
+}
+
+.experience-counter{
+    color:white;
+
+    font-size:1rem;
+
+    min-width:60px;
+
+    text-align:center;
+}
+
+.certificate-frame{
+    width:520px;
+    height:690px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }

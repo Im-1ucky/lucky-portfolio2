@@ -16,19 +16,31 @@
   margin: 60px auto;
 }
 
-.overlay-close {
-  position: fixed;
+.overlay-close{
+    position:fixed;
 
-  top: 24px;
-  right: 24px;
+    top:24px;
+    right:24px;
 
-  width: 48px;
-  height: 48px;
+    width:56px;
+    height:56px;
 
-  border: none;
-  border-radius: 50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-  cursor: pointer;
+    border:none;
+    border-radius:50%;
 
-  font-size: 22px;
+    color:white;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.overlay-close:hover{
+    transform:scale(1.08);
 }
