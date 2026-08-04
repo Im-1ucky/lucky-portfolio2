@@ -10,6 +10,7 @@ import ResumeButton from "./Components/ResumeButton/ResumeButton";
 import ScrollHint from "./Components/ScrollHint/ScrollHint";
 import Overlay from "./Components/PortfolioPages/Overlay/Overlay";
 import Experience from "./Components/PortfolioPages/Experience/Experience";
+import Activities from "./Components/PortfolioPages/Activities/Activities";
 
 export default function App() {
   const containerRef = useRef(null);
@@ -120,7 +121,6 @@ export default function App() {
     };
   }, [scrollElement, currentSection, showLoader]);
 
-
   return (
     <div ref={containerRef} style={{ width: "100vw", height: "100vh" }}>
       {showLoader && (
@@ -171,6 +171,8 @@ export default function App() {
         onClose={() => setOverlayPage(null)}
       >
         {overlayPage === "experience" && <Experience />}
+
+        {overlayPage === "activities" && <Activities />}
       </Overlay>
     </div>
   );

@@ -1,0 +1,180 @@
+.activities-page{
+    display:flex;
+    flex-direction:column;
+
+    gap:4px;
+
+    width:100%;
+}
+
+.gallery-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.gallery-header h2{
+    font-size:1.8rem;
+    color: white;
+}
+
+.gallery-strip{
+    display:flex;
+    flex-direction:column;
+
+    gap:20px;
+}
+
+.gallery-image:hover{
+    transform:scale(1.03);
+}
+
+.gallery-arrow{
+    width:46px;
+    height:46px;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    cursor:pointer;
+    margin-top: -8px;
+}
+
+.gallery-controls{
+    display:flex;
+    gap:12px;
+}
+
+.embla{
+    overflow:hidden;
+}
+
+.embla__container{
+    display:flex;
+
+    gap:20px;
+}
+
+.embla__slide{
+    flex:0 0 340px;
+}
+
+.gallery-image{
+    width:100%;
+    height:220px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.gallery-image:hover{
+    transform:scale(1.03);
+}
+
+.gallery-lightbox{
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.82);
+    backdrop-filter:blur(14px);
+
+    z-index:10000;
+
+    animation:fadeIn .25s ease;
+}
+
+.gallery-lightbox-image{
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    border-radius:18px;
+
+    box-shadow:0 25px 80px rgba(0,0,0,.5);
+
+    animation:zoomIn .25s ease;
+}
+
+.gallery-image-frame{
+    width:1500px;
+    max-width:85vw;
+
+    height:80vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.activities-viewer{
+    height:100%;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:16px;
+
+    transform: translateY(-30px);
+}
+
+.activities-intro{
+    margin-bottom:2px;
+}
+
+.activities-intro h1{
+    margin:0;
+
+    color:white;
+
+    font-size:2.8rem;
+}
+
+.activities-intro p{
+    margin-top:16px;
+
+    max-width:1000px;
+
+    color:rgba(255,255,255,.75);
+
+    line-height:1.8;
+
+    font-size:1.4rem;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes zoomIn{
+    from{
+        transform:scale(.9);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
