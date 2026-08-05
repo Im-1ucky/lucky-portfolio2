@@ -11,6 +11,7 @@ import ScrollHint from "./Components/ScrollHint/ScrollHint";
 import Overlay from "./Components/PortfolioPages/Overlay/Overlay";
 import Experience from "./Components/PortfolioPages/Experience/Experience";
 import Activities from "./Components/PortfolioPages/Activities/Activities";
+import Projects from "./Components/PortfolioPages/Projects/Projects";
 
 export default function App() {
   const containerRef = useRef(null);
@@ -173,6 +174,8 @@ export default function App() {
         {overlayPage === "experience" && <Experience />}
 
         {overlayPage === "activities" && <Activities />}
+
+        {overlayPage === "projects" && <Projects />}
       </Overlay>
     </div>
   );
