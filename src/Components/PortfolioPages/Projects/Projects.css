@@ -272,8 +272,12 @@
     font-weight:600;
 }
 
-.project-showcase-left .project-preview-image{
-    height:710px;
+.project-showcase-left .project-preview-image {
+    height: auto;           /* let it breathe */
+    max-height: 710px;      /* cap the height */
+    width: 100%;
+    object-fit: contain;    /* show the full image, no cropping */
+    background: rgba(255, 255, 255, 0.03); /* subtle bg for letterboxing */
 }
 
 .project-showcase-right p{

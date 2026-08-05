@@ -15,10 +15,11 @@ export const projects = [
     ],
 
     images: [
-      "/projects/attendance/1.webp",
-      "/projects/attendance/2.webp",
-      "/projects/attendance/3.webp",
-      "/projects/attendance/4.webp",
+      `${import.meta.env.BASE_URL}projects/attendance/1.png`,
+      `${import.meta.env.BASE_URL}projects/attendance/2.png`,
+      `${import.meta.env.BASE_URL}projects/attendance/3.png`,
+      `${import.meta.env.BASE_URL}projects/attendance/4.png`,
+      `${import.meta.env.BASE_URL}projects/attendance/5.png`,
     ],
 
     overview:
