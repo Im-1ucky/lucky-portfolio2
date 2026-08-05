@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { useProgress } from "@react-three/drei";
+import { Info } from "lucide-react";
 
 import Scene from "./Scene/Scene";
 import BottomNav from "./Components/BottomNav/BottomNav";
@@ -33,6 +34,11 @@ export default function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [showScrollHint, setShowScrollHint] = useState(false);
   const [overlayPage, setOverlayPage] = useState(null);
+  const labels = {
+    projects: "Explore Projects",
+    experience: "View Experience",
+    activities: "Browse Activities",
+  };
 
   useEffect(() => {
     if (!active && progress === 100) {
@@ -155,17 +161,18 @@ export default function App() {
       <ContactTip visible={showContactHint} />
 
       {overlayPage === null && pageMap[currentSection] && (
-        <button
-          style={{
-            position: "fixed",
-            top: 100,
-            left: 20,
-            zIndex: 5000,
-          }}
-          onClick={() => setOverlayPage(pageMap[currentSection])}
-        >
-          Open {pageMap[currentSection]}
-        </button>
+        <div className="info-hotspot-container">
+          <button
+            className="info-hotspot"
+            onClick={() => setOverlayPage(pageMap[currentSection])}
+          >
+            <Info size={20} />
+          </button>
+
+          <span className="info-hotspot-text">
+            {labels[pageMap[currentSection]]}
+          </span>
+        </div>
       )}
 
       <Overlay
