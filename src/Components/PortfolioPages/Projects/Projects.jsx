@@ -1,9 +1,8 @@
 import "./Projects.css";
-import { useState } from "react";
 import { projects } from "../../../data/projects";
 import ProjectCard from "./ProjectCard";
 import ProjectShowcase from "./ProjectShowcase";
-import Overlay from "../Overlay/Overlay";
+import { useState, useEffect } from "react";
 
 export default function Projects() {
   const [current, setCurrent] = useState(null);
@@ -19,6 +18,19 @@ export default function Projects() {
       prev === projects.length - 1 ? 0 : prev + 1
     );
   };
+
+  if (current !== null) {
+    return (
+      <ProjectShowcase
+        project={projects[current]}
+        current={current}
+        total={projects.length}
+        previous={previous}
+        next={next}
+        onClose={() => setCurrent(null)}
+      />
+    );
+  }
 
   return (
     <div className="projects-page">
@@ -40,21 +52,6 @@ export default function Projects() {
         ))}
       </div>
 
-      {current !== null && (
-        <Overlay
-          open={true}
-          onClose={() => setCurrent(null)}
-        >
-          <ProjectShowcase
-            project={projects[current]}
-            current={current}
-            total={projects.length}
-            previous={previous}
-            next={next}
-            onClose={() => setCurrent(null)}
-          />
-        </Overlay>
-      )}
     </div>
   );
 }

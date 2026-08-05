@@ -286,6 +286,16 @@
     line-height:1.5;
 }
 
+.project-showcase-page{
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+}
+
+.project-showcase-page .credential-button{
+    align-self:center;
+}
+
 .project-features{
     margin:0;
     padding-left:22px;

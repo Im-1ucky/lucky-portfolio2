@@ -5,6 +5,7 @@ import Model from "./Model";
 export default function Scene({
   darkMode,
   setOverlayPage,
+  overlayPage,
 }) {
   return (
     <Canvas>
@@ -15,7 +16,10 @@ export default function Scene({
         intensity={darkMode ? 0.7 : 1}
       />
 
-      <ScrollControls pages={10}> //Less than 100 try
+      <ScrollControls
+        pages={10}
+        enabled={overlayPage === null}
+      >
         <Model setOverlayPage={setOverlayPage} />
       </ScrollControls>
     </Canvas>

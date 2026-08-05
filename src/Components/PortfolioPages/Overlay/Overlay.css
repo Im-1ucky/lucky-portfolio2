@@ -1,19 +1,24 @@
-.overlay {
-  position: fixed;
-  inset: 0;
+.overlay{
+    position:fixed;
+    inset:0;
 
-  background: rgba(0, 0, 0, 0.85);
+    background:rgba(0,0,0,.85);
+    backdrop-filter:blur(10px);
 
-  backdrop-filter: blur(10px);
+    z-index:3000;
 
-  z-index: 3000;
-
-  overflow-y: auto;
+    overflow-y:auto;
 }
 
-.overlay-content {
-  width: min(1200px, 90%);
-  margin: 60px auto;
+.overlay-content{
+    width:min(1200px,90%);
+    min-height:100vh;
+
+    padding:60px 0;
+
+    margin:0 auto;
+
+    box-sizing:border-box;
 }
 
 .overlay-close{

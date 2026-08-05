@@ -137,6 +137,7 @@ export default function App() {
         currentSection={currentSection}
         setCurrentSection={setCurrentSection}
         setOverlayPage={setOverlayPage}
+        overlayPage={overlayPage}
       />
 
       <ResumeButton />

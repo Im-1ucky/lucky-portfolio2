@@ -116,6 +116,7 @@ export default function GalleryStrip({
                 loading="lazy"
                 onClick={() =>
                   onImageClick({
+                    title,
                     images,
                     index,
                   })

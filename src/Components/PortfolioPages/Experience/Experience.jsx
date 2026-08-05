@@ -22,6 +22,17 @@ export default function Experience() {
 
   return (
     <div className="experience-page">
+
+      <div className="experience-intro">
+        <h1>Experience</h1>
+
+        <p>
+          My professional journey through internships and industry projects,
+          where gained real world software development experience while collaborating with teams and building
+          production ready solutions.
+        </p>
+      </div>
+
       <div className="experience-content">
 
         {/* LEFT SIDE */}

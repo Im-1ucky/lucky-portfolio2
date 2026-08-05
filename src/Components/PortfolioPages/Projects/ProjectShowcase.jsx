@@ -13,81 +13,83 @@ export default function ProjectShowcase({
   if (!project) return null;
 
   return (
-    <div className="project-showcase">
+    <div className="project-showcase-page">
 
-      <div className="project-showcase-left">
+      <button
+        className="credential-button"
+        onClick={onClose}
+      >
+        Back to Projects
+      </button>
+
+      <div className="project-showcase">
+
+        <div className="project-showcase-left">
 
           <div className="project-showcase-carousel">
 
-              <ProjectCarousel
-                  images={project.images}
-          />
+            <ProjectCarousel images={project.images} />
 
-          <div className="experience-navigation">
+            <div className="experience-navigation">
+              <button
+                className="nav-arrow"
+                onClick={previous}
+              >
+                ❮
+              </button>
 
-            <button
-              className="nav-arrow"
-              onClick={previous}
-            >
-              ❮
-            </button>
+              <span className="experience-counter">
+                {current + 1} / {total}
+              </span>
 
-            <span className="experience-counter">
-              {current + 1} / {total}
-            </span>
-
-            <button
-              className="nav-arrow"
-              onClick={next}
-            >
-              ❯
-            </button>
+              <button
+                className="nav-arrow"
+                onClick={next}
+              >
+                ❯
+              </button>
+            </div>
 
           </div>
 
         </div>
 
-      </div>
+        <div className="project-showcase-right">
 
-      {/* RIGHT */}
-      <div className="project-showcase-right">
+          <h1>{project.title}</h1>
 
-        <h1>{project.title}</h1>
+          <h2>Overview</h2>
 
-        <h2>Overview</h2>
+          <p>{project.overview}</p>
 
-        <p>{project.overview}</p>
+          <h2>Technologies</h2>
 
-        <h2>Technologies</h2>
+          <div className="project-tech">
+            {project.technologies.map((technology) => (
+              <span key={technology}>{technology}</span>
+            ))}
+          </div>
 
-        <div className="project-tech">
-          {project.technologies.map((technology) => (
-            <span key={technology}>
-              {technology}
-            </span>
-          ))}
+          <h2>Features</h2>
+
+          <ul className="project-features">
+            {project.features.map((feature) => (
+              <li key={feature}>{feature}</li>
+            ))}
+          </ul>
+
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              className="project-button"
+            >
+              Read more →
+            </a>
+          )}
+
         </div>
-
-        <h2>Features</h2>
-
-        <ul className="project-features">
-          {project.features.map((feature) => (
-            <li key={feature}>
-              {feature}
-            </li>
-          ))}
-        </ul>
-
-        {project.github && (
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noreferrer"
-            className="project-button"
-          >
-            Read more →
-          </a>
-        )}
 
       </div>
 

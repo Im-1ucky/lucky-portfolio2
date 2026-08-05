@@ -114,12 +114,13 @@
     width:1500px;
     max-width:85vw;
 
-    height:80vh;
+    height:75vh;
 
     display:flex;
     justify-content:center;
     align-items:center;
 }
+
 
 .activities-viewer{
     height:100%;
@@ -130,7 +131,7 @@
     justify-content:center;
     align-items:center;
 
-    gap:16px;
+    gap:6px;
 
     transform: translateY(-30px);
 }
@@ -147,10 +148,23 @@
     font-size:2.8rem;
 }
 
+.gallery-content{
+    width:1500px;
+    max-width:85vw;
+}
+
+.gallery-title{
+    margin:0 0 12px;
+    color:white;
+    font-size:2rem;
+    font-weight:700;
+    text-align:left;
+}
+
 .activities-intro p{
     margin-top:16px;
 
-    max-width:1000px;
+    max-width:1200px;
 
     color:rgba(255,255,255,.75);
 

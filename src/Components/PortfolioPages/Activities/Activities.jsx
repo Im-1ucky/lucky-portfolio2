@@ -28,20 +28,28 @@ export default function Activities() {
     return (
       <div className="activities-viewer">
 
-        <button
-          className="credential-button"
-          onClick={() => setSelectedImage(null)}
-        >
-          Back to Gallery
-        </button>
+          <button
+              className="credential-button"
+              onClick={() => setSelectedImage(null)}
+          >
+              Back to Gallery
+          </button>
 
-        <div className="gallery-image-frame">
-          <img
-            src={selectedImage.images[selectedImage.index]}
-            alt=""
-            className="gallery-lightbox-image"
-          />
-        </div>
+          <div className="gallery-content">
+
+              <h2 className="gallery-title">
+                  {selectedImage.title}
+              </h2>
+
+              <div className="gallery-image-frame">
+                  <img
+                      src={selectedImage.images[selectedImage.index]}
+                      alt=""
+                      className="gallery-lightbox-image"
+                  />
+              </div>
+
+          </div>
 
         <div className="experience-navigation">
 
