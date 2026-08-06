@@ -36,12 +36,12 @@ export const activities = [
     id: "cie",
     title: "Centre for Innovation & Entrepreneurship",
     images: [
-      import.meta.env.BASE_URL + "activities/cie/cie1.png",
-      import.meta.env.BASE_URL + "activities/cie/cie2.jpg",
-      import.meta.env.BASE_URL + "activities/cie/cie3.jpg",
-      import.meta.env.BASE_URL + "activities/cie/cie4.jpg",
-      import.meta.env.BASE_URL + "activities/cie/cie4.jpg",
-      import.meta.env.BASE_URL + "activities/cie/cie6.jpg",
+      import.meta.env.BASE_URL + "activities/cie/1.png",
+      import.meta.env.BASE_URL + "activities/cie/2.jpg",
+      import.meta.env.BASE_URL + "activities/cie/3.jpg",
+      import.meta.env.BASE_URL + "activities/cie/4.jpg",
+      import.meta.env.BASE_URL + "activities/cie/4.jpg",
+      import.meta.env.BASE_URL + "activities/cie/6.jpg",
     ],
   },
 ];
