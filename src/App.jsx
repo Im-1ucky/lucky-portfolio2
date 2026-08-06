@@ -16,6 +16,11 @@ import Projects from "./Components/PortfolioPages/Projects/Projects";
 
 export default function App() {
   const containerRef = useRef(null);
+  const [cursorLabel, setCursorLabel] = useState("");
+  const [mousePosition, setMousePosition] = useState({
+    x: 0,
+    y: 0,
+  });
   const [darkMode, setDarkMode] = useState(false);
   const pageMap = {
     4: "experience",
@@ -91,6 +96,21 @@ export default function App() {
   }, [currentSection]);
 
   useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({
+        x: e.clientX,
+        y: e.clientY,
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!scrollElement) return;
 
     if (currentSection === 6) {
@@ -144,6 +164,7 @@ export default function App() {
         setCurrentSection={setCurrentSection}
         setOverlayPage={setOverlayPage}
         overlayPage={overlayPage}
+        setCursorLabel={setCursorLabel}
       />
 
       <ResumeButton />
@@ -158,7 +179,17 @@ export default function App() {
         visible={showScrollHint}
       />
 
-      <ContactTip visible={showContactHint} />
+      <ContactTip
+        visible={showContactHint}
+        text="Click link to visit its page ↗"
+      />
+
+      <ContactTip
+        visible={cursorLabel !== ""}
+        text={cursorLabel}
+        x={mousePosition.x}
+        y={mousePosition.y}
+      />
 
       {overlayPage === null && pageMap[currentSection] && (
         <div className="info-hotspot-container">

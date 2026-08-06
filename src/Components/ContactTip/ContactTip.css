@@ -38,3 +38,30 @@
     transform: translateY(-8px);
   }
 }
+
+.cursor-tip{
+    position: fixed;
+
+    padding: 10px 16px;
+
+    background: rgba(10,10,10,.95);
+
+    color: white;
+
+    font-size: .95rem;
+    font-weight: 500;
+
+    border-radius: 8px;
+
+    white-space: nowrap;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    z-index: 10000;
+
+    backdrop-filter: blur(8px);
+
+    box-shadow: 0 8px 24px rgba(0,0,0,.35);
+}

@@ -6,6 +6,7 @@ export default function Scene({
   darkMode,
   setOverlayPage,
   overlayPage,
+  setCursorLabel,
 }) {
   return (
     <Canvas>
@@ -20,7 +21,10 @@ export default function Scene({
         pages={10}
         enabled={overlayPage === null}
       >
-        <Model setOverlayPage={setOverlayPage} />
+        <Model
+          setOverlayPage={setOverlayPage}
+          setCursorLabel={setCursorLabel}
+        />
       </ScrollControls>
     </Canvas>
   );

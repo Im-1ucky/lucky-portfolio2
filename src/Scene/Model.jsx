@@ -6,6 +6,7 @@ const modelPath = import.meta.env.BASE_URL + "3dmodels/f2.glb";
 
 export default function Model({
   setOverlayPage,
+  setCursorLabel,
 }) {
   const { scene, animations } = useGLTF(modelPath);
   const { actions, mixer } = useAnimations(animations, scene);
@@ -22,6 +23,9 @@ export default function Model({
     const github = scene.getObjectByName("GithubHitbox");
     const linkedin = scene.getObjectByName("LinkedinHitbox");
     const email = scene.getObjectByName("MailHitbox");
+    console.log(github);
+    console.log(linkedin);
+    console.log(email);
 
     [github, linkedin, email].forEach((obj) => {
       obj.material = obj.material.clone();
@@ -57,7 +61,7 @@ export default function Model({
     mixer.update(delta);
 
     const progress = scroll.offset;
-    console.log(progress.toFixed(3));
+    //console.log(progress.toFixed(3));
 
     //console.log(progress);
 
@@ -94,7 +98,47 @@ export default function Model({
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
-  return <primitive object={scene} onClick={handleClick} />;
+  const handlePointerOver = (e) => {
+    e.stopPropagation();
+
+    switch (e.object.name) {
+      case "GithubHitbox":
+        setCursorLabel("Open GitHub");
+        break;
+
+      case "LinkedinHitbox":
+        setCursorLabel("Open LinkedIn");
+        break;
+
+      case "MailHitbox":
+        setCursorLabel("Open Mail");
+        break;
+
+      default:
+        return;
+    }
+  };
+
+  const handlePointerOut = (e) => {
+    e.stopPropagation();
+
+    if (
+      e.object.name === "GithubHitbox" ||
+      e.object.name === "LinkedinHitbox" ||
+      e.object.name === "MailHitbox"
+    ) {
+      setCursorLabel("");
+    }
+  };
+
+  return (
+    <primitive
+      object={scene}
+      onClick={handleClick}
+      onPointerOver={handlePointerOver}
+      onPointerOut={handlePointerOut}
+    />
+  );
 }
 
 useGLTF.preload(import.meta.env.BASE_URL + "3dmodels/f2.glb");
